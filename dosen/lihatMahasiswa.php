@@ -21,16 +21,29 @@ $KHS_Berkas = $db->query("SELECT khs.berkas_KHS AS KHS_Berkas FROM khs, mahasisw
 $IRS_Berkas = $db->query("SELECT irs.berkas_IRS AS IRS_Berkas FROM irs, mahasiswa WHERE irs.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->IRS_Berkas;
 $PKL_Berkas = $db->query("SELECT pkl.berkas_PKL AS PKL_Berkas FROM pkl, mahasiswa WHERE pkl.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->PKL_Berkas ;
 $Skripsi_Berkas = $db->query("SELECT skripsi.berkas_Skripsi AS Skripsi_Berkas FROM skripsi, mahasiswa WHERE skripsi.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->Skripsi_Berkas;
+
+$Status_PKL = $db->query("SELECT pkl.status AS status_pkl FROM pkl, mahasiswa WHERE pkl.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->status_pkl ;
+$Verif_PKL = $db->query("SELECT pkl.status_verif AS verif_pkl FROM pkl, mahasiswa WHERE pkl.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->verif_pkl ;
+$Nilai_PKL = $db->query("SELECT pkl.Nilai AS nilai_pkl FROM pkl, mahasiswa WHERE pkl.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->nilai_pkl ;
+$SMT_Lulus = $db->query("SELECT pkl.Semester_Lulus AS smt_lulus FROM pkl, mahasiswa WHERE pkl.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->smt_lulus ;
+
+$Status_Skripsi = $db->query("SELECT skripsi.status AS status_skripsi FROM skripsi, mahasiswa WHERE skripsi.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->status_skripsi ;
+$Verif_Skripsi = $db->query("SELECT skripsi.status_verif AS verif_skripsi FROM skripsi, mahasiswa WHERE skripsi.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->verif_skripsi ;
+$Nilai_Skripsi = $db->query("SELECT skripsi.Nilai AS nilai_skripsi FROM skripsi, mahasiswa WHERE skripsi.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->nilai_skripsi ;
+$Lama_Studi = $db->query("SELECT skripsi.Lama_Studi_tahun AS lama_studi FROM skripsi, mahasiswa WHERE skripsi.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->lama_studi ;
+$Tanggal_Sidang = $db->query("SELECT skripsi.Tanggal_Sidang AS tanggal_sidang FROM skripsi, mahasiswa WHERE skripsi.nim = mahasiswa.nim AND mahasiswa.NIM = $NIM_mahasiswa")->fetch_object()->tanggal_sidang ;
+
 ?>
 
 <body>
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid px-4" style="width: 80%;"><a class="btn btn-danger float-end" role="button" href="individu.php">Back</a>
+            <div class="container-fluid px-4" style="width: 80%;"><a class="btn btn-danger float-end" role="button"
+                    href="individu.php">Back</a>
                 <h1 class="mt-4 mb-4">Progres Studi Mahasiswa</h1>
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-4" style="height:210px"> 
+                        <div class="card mb-4" style="height:210px">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
                                 <b>Informasi Mahasiswa</b>
@@ -71,22 +84,27 @@ $Skripsi_Berkas = $db->query("SELECT skripsi.berkas_Skripsi AS Skripsi_Berkas FR
                             </div>
                             <div class="card-body">
                                 <div>
-                                    <ul style="list-style: none;display:flex;justify-content: center;gap: 50px; margin-right:30px">
+                                    <ul
+                                        style="list-style: none;display:flex;justify-content: center;gap: 50px; margin-right:30px">
                                         <li style="display:flex-row;items-center;">
                                             <p style="margin-bottom: 50px; margin-left:20px">IRS</p>
-                                            <a href="<?php echo $IRS_Berkas ?>" download="Berkas_IRS.pdf" type="button" class="btn btn-primary">Berkas</a>
+                                            <a href="<?php echo $IRS_Berkas ?>" download="Berkas_IRS.pdf" type="button"
+                                                class="btn btn-primary">Berkas</a>
                                         </li>
                                         <li style="display:flex-row;items-center;x">
                                             <p style="margin-bottom: 50px; margin-left:20px">KHS</p>
-                                            <a href="<?php echo $KHS_Berkas ?>" download="Berkas_KHS.pdf" type="button" class="btn btn-primary">Berkas</a>
+                                            <a href="<?php echo $KHS_Berkas ?>" download="Berkas_KHS.pdf" type="button"
+                                                class="btn btn-primary">Berkas</a>
                                         </li>
                                         <li style="display:flex-row;items-center;">
                                             <p style="margin-bottom: 50px; margin-left:20px">PKL</p>
-                                            <a href="<?php echo $PKL_Berkas ?>" download="Berkas_PKL.pdf" type="button" class="btn btn-primary">Berkas</a>
+                                            <a href="<?php echo $PKL_Berkas ?>" download="Berkas_PKL.pdf" type="button"
+                                                class="btn btn-primary">Berkas</a>
                                         </li>
                                         <li style="display:flex-row;items-center;">
                                             <p style="margin-bottom: 50px; margin-left:10px">Skripsi</p>
-                                            <a href="<?php echo $Skripsi_Berkas ?>" download="Berkas_Skripsi.pdf" type="button" class="btn btn-primary">Berkas</a>
+                                            <a href="<?php echo $Skripsi_Berkas ?>" download="Berkas_Skripsi.pdf"
+                                                type="button" class="btn btn-primary">Berkas</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -97,7 +115,7 @@ $Skripsi_Berkas = $db->query("SELECT skripsi.berkas_Skripsi AS Skripsi_Berkas FR
 
                 <div class="row">
                     <div class="col-3">
-                        <div class="card mb-4" style="height: 170px;">
+                        <div class="card mb-4" style="height:200px;width:310px;">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
                                 <b>IRS</b>
@@ -122,7 +140,7 @@ $Skripsi_Berkas = $db->query("SELECT skripsi.berkas_Skripsi AS Skripsi_Berkas FR
                         </div>
                     </div>
                     <div class="col-3">
-                        <div class="card mb-4" style="height:170px;width:310px;">
+                        <div class="card mb-4" style="height:200px;width:310px;">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
                                 <b>KHS</b>
@@ -144,35 +162,61 @@ $Skripsi_Berkas = $db->query("SELECT skripsi.berkas_Skripsi AS Skripsi_Berkas FR
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card mb-4" >
+                    <div class="col-3">
+                        <div class="card mb-4" style="height:200px;width:310px;">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
-                                <b>Keterangan</b>
+                                <b>PKL</b>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-2"><a href="#" class="btn" style="background-color: #121CF6; border-color: #313AFF;" role="button"></a></div> Sudah
-                                    Diisikan (IRS dan KHS)
-                                </div>
-                                <div class="row">
-                                    <div class="col-2"><a href="#" class="btn" style="background-color: #B4B800; border-color: #C1C521;" role="button"></a></div>Sudah
-                                    LulusPKL (IRS, KHS, PKL)
-                                </div>
-                                <div class="row">
-                                    <div class="col-2"><a href="#" class="btn" style="background-color: #60E91F; border-color: #83FF48;" role="button"></a></div>Sudah
-                                    Lulus
-                                    Skripsi
-                                </div>
-                                <div class="row">
-                                    <div class="col-2"><a href="#" class="btn" style="background-color: #FB0000; border-color: #FF3131;" role="button"></a></div>Belum
-                                    Diisikan (IRS
-                                    dan KHS) atau tidak digunakan
+                                <div class="d-flex">
+                                    <div class="my-0 gap-3"
+                                        style="vertical-align: center; text-align:justify'display:inline-block;">
+                                        <ul class="list-unstyled">
+                                            <li><span class="fw-bold">Status &emsp;&emsp; &emsp; &emsp; &emsp;:
+                                                    &emsp;</span><?php echo $Status_PKL ?></li>
+                                            <li> <span class="fw-bold">Verifikasi Berkas &emsp;:
+                                                    &emsp;</span><?php echo $Verif_PKL ?></li>
+                                            <li><span class="fw-bold">Nilai &emsp;&emsp;&emsp;&emsp; &emsp; &emsp;:
+                                                    &emsp;</span><?php echo $Nilai_PKL ?></li>
+                                            <li><span class="fw-bold">Semester Lulus &ensp; &emsp;:
+                                                    &emsp;</span><?php echo $SMT_Lulus ?></li>
+                                            <ul>
+                                    </div>
                                 </div>
                             </div>
+
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card mb-4" style="height:200px;width:310px;">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area me-1"></i>
+                                <b>Skripsi</b>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="my-0 gap-3"
+                                        style="vertical-align: center; text-align:justify'display:inline-block;">
+                                        <ul class="list-unstyled">
+                                            <li><span class="fw-bold">Status &emsp;&emsp; &emsp; &emsp; &emsp;:
+                                                    &emsp;</span><?php echo $Status_Skripsi ?></li>
+                                            <li> <span class="fw-bold">Verifikasi Berkas &emsp;:
+                                                    &emsp;</span><?php echo $Verif_Skripsi ?></li>
+                                            <li><span class="fw-bold">Nilai &emsp;&emsp;&emsp;&emsp; &emsp; &emsp;:
+                                                    &emsp;</span><?php echo $Nilai_Skripsi ?></li>
+                                            <li> <span class="fw-bold">Lama Studi &emsp; &emsp; &emsp;:
+                                                    &emsp;</span><?php echo $Lama_Studi ?></li>
+                                            <li><span class="fw-bold">Tanggal Sidang &emsp;&ensp;:
+                                                    &emsp;</span><?php echo $Tanggal_Sidang ?></li>
+                                            <ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
