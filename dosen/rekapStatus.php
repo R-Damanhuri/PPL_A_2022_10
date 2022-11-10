@@ -32,72 +32,86 @@ $angkatan = array(2016,2017,2018,2019,2020,2021);
                     <div class="row row-cols-9 align-items-center m-2">
                         <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a style="color: #fff; background-color: #198754;
+                            border-color: #198754;" class="btn" role="button" href="#">';
                             echo mahasiswa_status("Aktif",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Aktif</div>
+                        <div class="col"><a style="color: #fff; background-color: #198754;
+                            border-color: #198754;" class="btn" role="button" href="#"></a> Aktif</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
                     <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a style="color: #fff; background-color: #3697FF;
+                            border-color: #3697FF;" class="btn" role="button" href="#">';
                             echo mahasiswa_status("Cuti",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Cuti</div>
+                        <div class="col"><a style="color: #fff; background-color: #3697FF;
+                            border-color: #3697FF;" class="btn" role="button" href="#"></a> Cuti</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
                     <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a style="color: #fff; background-color: #FFAB00;
+                            border-color: #FFAB00;" class="btn" role="button" href="#">';
                             echo mahasiswa_status("Mangkir",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Mangkir</div>
+                        <div class="col"><a style="color: #fff; background-color: #FFAB00;
+                            border-color: #FFAB00;" class="btn" role="button" href="#"></a> Mangkir</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
                         <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a style="color: #fff; background-color: #F35625;
+                            border-color: #F35625;" class="btn" role="button" href="#">';
                             echo mahasiswa_status("Drop-out",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Drop Out</div>
+                        <div class="col"><a style="color: #fff; background-color: #F35625;
+                            border-color: #F35625;" class="btn" role="button" href="#"></a> Drop Out</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
                     <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a style="color: #fff; background-color: #AA1212;
+                            border-color: #AA1212;" class="btn" role="button" href="#">';
                             echo mahasiswa_status("Undur Diri",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Undur Diri</div>
+                        <div class="col"><a style="color: #fff; background-color: #AA1212;
+                            border-color: #AA1212;" class="btn" role="button" href="#"></a> Undur Diri</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
                     <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a style="color: #fff; background-color: #77DEEC;
+                            border-color: #77DEEC;" class="btn" role="button" href="#">';
                             echo mahasiswa_status("Lulus",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Lulus</div>
+                        <div class="col"><a style="color: #fff; background-color: #77DEEC;
+                            border-color: #77DEEC;" class="btn" role="button" href="#"></a> Lulus</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
                     <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
-                            echo mahasiswa_status("Meninggal",$value);
+                            echo '<div class="col"><a style="color: #fff; background-color: #7D5EFA;
+                            border-color: #7D5EFA;" class="btn" role="button" href="#">';
+                            echo mahasiswa_status("Meninggal    ",$value);
                             echo '</a></div>';
                         }
                         ?>
-                        <div class="col"><a class="btn btn-success" role="button" href="#"></a> Meninggal Dunia</div>
+                        <div class="col"><a style="color: #fff; background-color: #7D5EFA;
+                            border-color: #7D5EFA;" class="btn" role="button" href="#"></a> Meninggal Dunia</div>
                     </div>
                 </div>
             </div>
