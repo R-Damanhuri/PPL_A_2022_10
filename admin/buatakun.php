@@ -155,7 +155,7 @@
                                                 }
                                             ?>
                                             </select>
-                                            <div class="error" style="color:red"><?php if(isset($error_kabupaten)) echo $error_kabupaten ?></div>
+                                            <div class="error" style="color:red"><?php if(isset($error_dosen)) echo $error_dosen ?></div>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
