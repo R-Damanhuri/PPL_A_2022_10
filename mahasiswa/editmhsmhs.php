@@ -126,7 +126,7 @@ if (isset($_POST['verif'])) {
                         </div><br />
                         <div class="form-group mb-3">
                             <button type="submit" class='btn btn-primary' type='button' name="verif" id="verif">Update</button>
-                            <button name="cancel" type="cancel" class="btn btn-danger" onclick="window.location.href='dashboardMHS.php'">Cancel</button>
+                            <button name="cancel" type="button" class="btn btn-danger" onclick="window.location.href='dashboardMHS.php'">Cancel</button>
                         </div>
                     </div>
             </div>
