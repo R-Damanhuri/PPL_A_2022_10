@@ -229,7 +229,7 @@ $email_admin = $db->query("SELECT email FROM user WHERE username = '$username'")
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        <b>Data Rekap Mahasiswa</b>
+                        <b>Data Rekap Dosen</b>
                     </div>
                     <div class="card-body tabel-mahasiswa cell-border">
                                 <table id="admin-tabel-dosen" class="cell-border dataTable" cellspacing="1" width="100%" >
