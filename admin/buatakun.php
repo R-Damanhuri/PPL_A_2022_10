@@ -82,8 +82,8 @@
                 $queryakun = "INSERT INTO `mahasiswa` VALUES(".(int)$nim.",'$nama','$email','$alamat','$nohp',2022,1,'Aktif','$folder','$username',".(int)$kabupaten.",".(int)$doswal.")";
                 $queryirs = $db -> query("INSERT INTO `irs`(`Semester_Aktif`, `Jumlah_SKS`, `Berkas_IRS`, `Status`, `NIM`) VALUES (1,22,NULL,'Sudah','$nim')");
                 $querykhs = $db -> query("INSERT INTO `khs`(`Semester_Aktif`, `SKS_Semester`, `SKS_Kumulatif`, `IP_Semester`, `IP_Kumulatif`, `Berkas_KHS`, `Status`, `NIM`) VALUES (1,22,0,0,0,NULL,'Sudah','$nim')");
-                $querypkl = $db -> query("INSERT INTO `pkl`(`Status`, `Nilai`, `Berkas_PKL`, `Status_Verif`, `NIM`) VALUES ('Belum Aktif',NULL,NULL,'Sudah','$nim')");
-                $queryskripsi = $db -> query("INSERT INTO `skripsi`(`Status`, `Nilai`, `Berkas_IRS`, `Lama_Studi(tahun)`, `Tanggal_Sidang`, `Status_Verif`, `NIM`) VALUES ('Belum Aktif',NULL,NULL,0,NULL,'Belum','$nim')");
+                $querypkl = $db -> query("INSERT INTO `pkl`(`Status`, `Nilai`, `Berkas_PKL`, `Status_Verif`,`Semester_Lulus`, `NIM`) VALUES ('Belum Aktif',NULL,NULL,'Sudah',0,'$nim')");
+                $queryskripsi = $db -> query("INSERT INTO `skripsi`(`Status`, `Nilai`, `Berkas_Skripsi`, `Lama_Studi_tahun`, `Tanggal_Sidang`, `Status_Verif`, `NIM`) VALUES ('Belum Aktif',NULL,NULL,0,NULL,'Belum','$nim')");
                 $result = $db -> query($queryakun);
                 
                 if(!$result) {
@@ -91,6 +91,7 @@
                 }else{
                     move_uploaded_file($tempname, $folder);
                     $stat_db = "Berhasil Di Input";
+                    // header("location:buatakun.php");
                 }
             }
             else{
@@ -155,7 +156,7 @@
                                                 }
                                             ?>
                                             </select>
-                                            <div class="error" style="color:red"><?php if(isset($error_dosen)) echo $error_dosen ?></div>
+                                            <div class="error" style="color:red"><?php if(isset($error_kabupaten)) echo $error_dosen ?></div>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
