@@ -8,21 +8,6 @@ function mahasiswa_skripsi($status,$tahun){
 $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dosen.username = user.username AND dosen.username = '$username'")->fetch_object()->NIP_dosen;
 $angkatan = array(2016,2017,2018,2019,2020,2021);
 
-
-// $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dosen.username = user.username AND dosen.username = '$username'")->fetch_object()->NIP_dosen;
-// $lulusskripsi_2016 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND skripsi.Status = 'Lulus' AND mahasiswa.Angkatan = 2016")->fetch_object()->jumlah;
-// $belumskripsi_2016 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (skripsi.Status = 'Belum Lulus' OR skripsi.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2016")->fetch_object()->jumlah;
-// $lulusskripsi_2017 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND skripsi.Status = 'Lulus' AND mahasiswa.Angkatan = 2017")->fetch_object()->jumlah;
-// $belumskripsi_2017 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (skripsi.Status = 'Belum Lulus' OR skripsi.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2017")->fetch_object()->jumlah;
-// $lulusskripsi_2018 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND skripsi.Status = 'Lulus' AND mahasiswa.Angkatan = 2018")->fetch_object()->jumlah;
-// $belumskripsi_2018 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (skripsi.Status = 'Belum Lulus' OR skripsi.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2018")->fetch_object()->jumlah;
-// $lulusskripsi_2019 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND skripsi.Status = 'Lulus' AND mahasiswa.Angkatan = 2019")->fetch_object()->jumlah;
-// $belumskripsi_2019 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (skripsi.Status = 'Belum Lulus' OR skripsi.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2019")->fetch_object()->jumlah;
-// $lulusskripsi_2020 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND skripsi.Status = 'Lulus' AND mahasiswa.Angkatan = 2020")->fetch_object()->jumlah;
-// $belumskripsi_2020 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (skripsi.Status = 'Belum Lulus' OR skripsi.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2020")->fetch_object()->jumlah;
-// $lulusskripsi_2021 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND skripsi.Status = 'Lulus' AND mahasiswa.Angkatan = 2021")->fetch_object()->jumlah;
-// $belumskripsi_2021 = $db->query("SELECT COUNT(skripsi.NIM) AS jumlah FROM mahasiswa, skripsi WHERE mahasiswa.NIM = skripsi.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (skripsi.Status = 'Belum Lulus' OR skripsi.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2021")->fetch_object()->jumlah;
-
 ?>
 <div id="layoutSidenav_content">
     <main>
@@ -66,7 +51,6 @@ $angkatan = array(2016,2017,2018,2019,2020,2021);
                 </div>
             </div>
             <div class="card mb-4" id="listSkripsi"></div>
-            <a style="color: #fff" class="btn btn-primary float-end" role="button" href="verifkhs.php">Cetak</a>
 
             <!-- Modal -->
             <div class="modal fade" id="verifModal" tabindex="-1" role="dialog"
