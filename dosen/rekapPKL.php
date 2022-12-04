@@ -10,21 +10,11 @@ $angkatan = array(2016,2017,2018,2019,2020,2021);
 
 
 $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dosen.username = user.username AND dosen.username = '$username'")->fetch_object()->NIP_dosen;
-// $lulusPKL_2016 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND pkl.Status = 'Lulus' AND mahasiswa.Angkatan = 2016")->fetch_object()->jumlah;
-// $belumPKL_2016 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (pkl.Status = 'Belum Lulus' OR pkl.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2016")->fetch_object()->jumlah;
-// $lulusPKL_2017 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND pkl.Status = 'Lulus' AND mahasiswa.Angkatan = 2017")->fetch_object()->jumlah;
-// $belumPKL_2017 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (pkl.Status = 'Belum Lulus' OR pkl.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2017")->fetch_object()->jumlah;
-// $lulusPKL_2018 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND pkl.Status = 'Lulus' AND mahasiswa.Angkatan = 2018")->fetch_object()->jumlah;
-// $belumPKL_2018 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (pkl.Status = 'Belum Lulus' OR pkl.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2018")->fetch_object()->jumlah;
-// $lulusPKL_2019 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND pkl.Status = 'Lulus' AND mahasiswa.Angkatan = 2019")->fetch_object()->jumlah;
-// $belumPKL_2019 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (pkl.Status = 'Belum Lulus' OR pkl.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2019")->fetch_object()->jumlah;
-// $lulusPKL_2020 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND pkl.Status = 'Lulus' AND mahasiswa.Angkatan = 2020")->fetch_object()->jumlah;
-// $belumPKL_2020 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (pkl.Status = 'Belum Lulus' OR pkl.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2020")->fetch_object()->jumlah;
-// $lulusPKL_2021 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND pkl.Status = 'Lulus' AND mahasiswa.Angkatan = 2021")->fetch_object()->jumlah;
-// $belumPKL_2021 = $db->query("SELECT COUNT(pkl.NIM) AS jumlah FROM mahasiswa, pkl WHERE mahasiswa.NIM = pkl.NIM AND mahasiswa.NIP_Doswal =". $NIP_dosen. " AND (pkl.Status = 'Belum Lulus' OR pkl.Status = 'Belum Aktif') AND mahasiswa.Angkatan = 2021")->fetch_object()->jumlah;
-
 
 ?>
+
+<script src="../js/rekap.js"></script>
+
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4" style="width: 80%;">
@@ -45,9 +35,9 @@ $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dos
                         <div class="col"></div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
-                    <?php
+                        <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a class="btn btn-success" role="button" href="#">';
+                            echo '<div class="col"><a class="btn btn-success" role="button" onclick="showPKLLulus('.$value.')">';
                             echo mahasiswa_PKL("Lulus",$value);
                             echo '</a></div>';
                         }
@@ -55,9 +45,9 @@ $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dos
                         <div class="col"><a class="btn btn-success" role="button" href="#"></a> Sudah</div>
                     </div>
                     <div class="row row-cols-9 align-items-center m-2">
-                    <?php
+                        <?php
                         foreach ($angkatan as $value){
-                            echo '<div class="col"><a style="color: #fff" class="btn btn-danger" role="button" href="#">';
+                            echo '<div class="col"><a class="btn btn-danger" role="button" onclick="showPKLBelum('.$value.')">';
                             echo mahasiswa_PKL("Belum Lulus",$value);
                             echo '</a></div>';
                         }
@@ -66,7 +56,22 @@ $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dos
                     </div>
                 </div>
             </div>
-            <div class="card mb-4" id="listPKL"></div>
+            <div class="card mb-4" id="">
+                <table class="table" id="">
+                    <thead class="table-light">
+                        <tr>
+                            <th>No</th>
+                            <th>NIM</th>
+                            <th>Nama</th>
+                            <th>Angkatan</th>
+                            <th>Semester</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listPKL">
+                    </tbody>
+                </table>
+            </div>
             <a style="color: #fff" class="btn btn-primary float-end" role="button" href="verifkhs.php">Cetak</a>
 
             <!-- Modal -->
