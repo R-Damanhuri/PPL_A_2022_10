@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if(!isset($_SESSION['username'])){
+    header('Location: ../index.php');
+}
 include("../template/headerdepartemen.php");
 include("../lib/connect.php");
 $count_dosen = $db->query("SELECT COUNT(NIP) AS jumlah FROM dosen")->fetch_object()->jumlah;
