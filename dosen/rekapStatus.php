@@ -116,7 +116,6 @@ $angkatan = array(2016,2017,2018,2019,2020,2021);
                 </div>
             </div>
             <div class="card mb-4" id="listStatus"></div>
-            <a class="btn btn-primary float-end" role="button" href="verifkhs.php">Cetak</a>
 
             <!-- Modal -->
             <div class="modal fade" id="verifModal" tabindex="-1" role="dialog"
