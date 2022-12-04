@@ -36,7 +36,6 @@
                     </table>
                 </div>
             </div>
-            <a style="color: #fff" class="btn btn-primary float-end" role="button" href="verifkhs.php">Cetak</a>
     </main>
 
     <?php include("../template/footeruniversal.php")?>
