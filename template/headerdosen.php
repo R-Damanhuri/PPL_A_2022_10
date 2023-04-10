@@ -2,6 +2,9 @@
 // error_reporting(0);
 ob_start();
 session_start();
+if(!isset($_SESSION['username'])){
+    header('Location: ../index.php');
+}
 $username = $_SESSION['username'];
 $foto = $db->query("SELECT dosen.Foto FROM user,dosen WHERE dosen.username = user.username AND dosen.username = '$username'")->fetch_object()->Foto;
 $Nama = $db->query("SELECT dosen.Nama FROM user,dosen WHERE dosen.username = user.username AND dosen.username = '$username'")->fetch_object()->Nama;

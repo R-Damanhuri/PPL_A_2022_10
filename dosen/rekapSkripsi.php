@@ -9,6 +9,9 @@ $NIP_dosen = $db->query("SELECT dosen.NIP AS NIP_dosen FROM dosen,user WHERE dos
 $angkatan = array(2016,2017,2018,2019,2020,2021);
 
 ?>
+
+<script src="../js/rekap.js"></script>
+
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4" style="width: 80%;">
@@ -50,7 +53,22 @@ $angkatan = array(2016,2017,2018,2019,2020,2021);
                     </div>
                 </div>
             </div>
-            <div class="card mb-4" id="listSkripsi"></div>
+            <div class="card mb-4" id="">
+                <table class="table" id="">
+                    <thead class="table-light">
+                        <tr>
+                            <th>No</th>
+                            <th>NIM</th>
+                            <th>Nama</th>
+                            <th>Angkatan</th>
+                            <th>Semester</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listSkripsi">
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="verifModal" tabindex="-1" role="dialog"

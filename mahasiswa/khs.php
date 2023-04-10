@@ -157,7 +157,7 @@ if (isset($_POST["submit"])){
                         <div class="form-group mb-3">
                             <label for="">IP Kumulatif</label>
                             <div class="input-group">
-                                <input id="ip_kumulatif" type="number" step="0.01" type="text" aria-describedby="HelpBlock" required="required" class="form-control">
+                                <input id="ip_kumulatif" name="ip_kumulatif" type="number" step="0.01" type="text" aria-describedby="HelpBlock" required="required" class="form-control">
                             </div>
                             <span id="HelpBlock" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Rata-rata IP selama kuliah</span>
                             <div class="error" style="color:red"><?php if (isset($error_ip_kumulatif)) echo $error_ip_kumulatif ?></div>

@@ -1,5 +1,8 @@
 <?php include('../lib/connect.php'); 
 session_start();
+if(!isset($_SESSION['username'])){
+    header('Location: ../index.php');
+}
 $username = $_SESSION['username'];
 $foto = $db->query("SELECT admin.Foto FROM user,admin WHERE admin.username = user.username AND admin.username = '$username'")->fetch_object()->Foto;
 $Nama = $db->query("SELECT admin.Nama FROM user,admin WHERE admin.username = user.username AND admin.username = '$username'")->fetch_object()->Nama;
